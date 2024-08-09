@@ -1,0 +1,107 @@
+int trigger = 12;
+int echo = 13;
+// Assuming one LED is controlled by the ultrasonic sensor and another by IR
+int led1= 1; 
+int led2= 2;
+int led3= 3; 
+int led4= 4;
+int led5= 5; 
+int led6= 6;
+int led7= 7; 
+int led8= 8;
+int led9= 9; 
+int led10= 10;
+ // LED for ultrasonic sensor
+long duration = 0;
+int cm = 0;
+int inch = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(trigger, OUTPUT);
+  pinMode(echo, INPUT);
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  pinMode(led4, OUTPUT);
+  pinMode(led5, OUTPUT);
+  pinMode(led6, OUTPUT);
+  pinMode(led7, OUTPUT);
+  pinMode(led8, OUTPUT);
+  pinMode(led9, OUTPUT);
+  pinMode(led10, OUTPUT);
+}
+
+void loop() {
+  // Ultrasonic sensor measurement
+  digitalWrite(trigger, LOW);
+  delayMicroseconds(2); // Ensure a clean HIGH pulse
+  digitalWrite(trigger, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigger, LOW);
+
+  duration = pulseIn(echo, HIGH);
+  cm = duration * 0.034 / 2;
+  inch = duration * 0.0133 / 2;
+
+  // Control LED based on ultrasonic sensor reading
+  if (inch < 25) {
+    digitalWrite(led1, HIGH);
+  } else {
+    digitalWrite(led1, LOW);
+  }
+   if (inch < 25) {
+    digitalWrite(led2, HIGH);
+  } else {
+    digitalWrite(led2, LOW);
+  }
+   if (inch < 30) {
+    digitalWrite(led3, 0);
+  } else {
+    digitalWrite(led3, 1);
+  }
+   if (inch < 30) {
+    digitalWrite(led4, 0);
+  } else {
+    digitalWrite(led4, 1);
+  }
+   if (inch < 20) {
+    digitalWrite(led5, 0);
+  } else {
+    digitalWrite(led5, 1);
+  }
+   if (inch < 20) {
+    digitalWrite(led6, 0);
+  } else {
+    digitalWrite(led6, 1);
+  }
+   if (inch < 10) {
+    digitalWrite(led7, 0);
+  } else {
+    digitalWrite(led7, 1);
+  }
+   if (inch < 10) {
+    digitalWrite(led8, HIGH);
+  } else {
+    digitalWrite(led8, LOW);
+  }
+   if (inch < 5) {
+    digitalWrite(led9, 0);
+  } else {
+    digitalWrite(led9, 1);
+  }
+   if (inch < 5) {
+    digitalWrite(led10, HIGH);
+  } else {
+    digitalWrite(led10, LOW);
+  }
+  // Print distance readings if object is within 100 inches
+  if (inch < 100) {
+    Serial.print("Inches: ");
+    Serial.println(inch);
+    Serial.print("Cm: ");
+    Serial.println(cm);
+  }
+
+  delay(900);
+}
