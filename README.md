@@ -1,4 +1,4 @@
-#Hardware Implementation 
+#Hardware Implementation--------
 The implementation process for the proposed aircraft detection and runway lighting system involves meticulous steps to ensure reliability and functionality. 
 Firstly, connect the ultrasonic sensor to the breadboard, ensuring secure connections by aligning its pins with the appropriate rows on the board.
 Subsequently, establish electrical connections between the sensor's pins and the input/output pins of an Arduino UNO microcontroller using jumper wires.
